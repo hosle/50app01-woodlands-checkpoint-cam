@@ -1,0 +1,82 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient background -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFA07A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#64B5F6;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#42A5F5;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded background -->
+  <rect width="200" height="200" rx="44" fill="url(#skyGradient)"/>
+  
+  <!-- Water area -->
+  <rect x="0" y="130" width="200" height="70" fill="url(#waterGradient)"/>
+  <path d="M 0,135 Q 25,132 50,135 Q 75,138 100,135 Q 125,132 150,135 Q 175,138 200,135" 
+        fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.4"/>
+  <path d="M 0,145 Q 25,142 50,145 Q 75,148 100,145 Q 125,142 150,145 Q 175,148 200,145" 
+        fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.3"/>
+  
+  <!-- Causeway bridge -->
+  <rect x="0" y="95" width="200" height="35" fill="#E0E0E0" opacity="0.9"/>
+  <rect x="0" y="95" width="200" height="3" fill="#BDBDBD"/>
+  <rect x="0" y="127" width="200" height="3" fill="#BDBDBD"/>
+  
+  <!-- Bridge pillars -->
+  <rect x="30" y="130" width="8" height="35" fill="#999999" opacity="0.7"/>
+  <rect x="162" y="130" width="8" height="35" fill="#999999" opacity="0.7"/>
+  
+  <!-- Road markings - clear lane -->
+  <rect x="95" y="25" width="10" height="20" rx="2" fill="#FFFFFF" opacity="0.6"/>
+  <rect x="95" y="55" width="10" height="20" rx="2" fill="#FFFFFF" opacity="0.6"/>
+  <rect x="95" y="85" width="10" height="10" rx="2" fill="#FFFFFF" opacity="0.6"/>
+  
+  <!-- Yellow car running smoothly -->
+  <g transform="translate(100, 112) scale(1.5)">
+    <!-- Car body -->
+    <path d="M -30,-10 Q -28,-18 -20,-22 Q -10,-24 0,-24 Q 10,-24 20,-22 Q 28,-18 30,-10 
+             L 30,8 Q 28,12 20,12 Q 10,12 0,12 Q -10,12 -20,12 Q -28,12 -30,8 Z" 
+          fill="#FFD54F"/>
+    
+    <!-- Car roof/cabin -->
+    <path d="M -20,-14 Q -18,-20 -10,-22 Q 0,-23 10,-22 Q 18,-20 20,-14 L 18,-10 L -18,-10 Z" 
+          fill="#FFC107"/>
+    
+    <!-- Windshield -->
+    <path d="M -14,-18 Q -8,-21 0,-21 Q 8,-21 14,-18 L 12,-12 L -12,-12 Z" 
+          fill="#B3E5FC" opacity="0.6"/>
+    
+    <!-- Side windows -->
+    <ellipse cx="-16" cy="-14" rx="5" ry="4" fill="#B3E5FC" opacity="0.5"/>
+    <ellipse cx="16" cy="-14" rx="5" ry="4" fill="#B3E5FC" opacity="0.5"/>
+    
+    <!-- Wheels -->
+    <circle cx="-18" cy="10" r="7" fill="#424242"/>
+    <circle cx="-18" cy="10" r="4" fill="#757575"/>
+    <circle cx="18" cy="10" r="7" fill="#424242"/>
+    <circle cx="18" cy="10" r="4" fill="#757575"/>
+    
+    <!-- Headlights -->
+    <ellipse cx="28" cy="-6" rx="3" ry="2.5" fill="#FFF9C4"/>
+    <ellipse cx="28" cy="2" rx="3" ry="2.5" fill="#FFEB3B"/>
+    
+    <!-- Speed lines indicating smooth movement -->
+    <line x1="-35" y1="-8" x2="-48" y2="-8" stroke="#FFD54F" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+    <line x1="-35" y1="0" x2="-52" y2="0" stroke="#FFD54F" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
+    <line x1="-35" y1="8" x2="-48" y2="8" stroke="#FFD54F" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+    
+    <!-- Additional motion blur effect -->
+    <line x1="-38" y1="-4" x2="-45" y2="-4" stroke="#FFC107" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    <line x1="-38" y1="4" x2="-45" y2="4" stroke="#FFC107" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  </g>
+  
+  <!-- Green checkmark indicator (no jam) -->
+  <g transform="translate(160, 50)">
+    <circle cx="0" cy="0" r="18" fill="#66BB6A" opacity="0.9"/>
+    <path d="M -6,0 L -2,6 L 8,-6" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+</svg>

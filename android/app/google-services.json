@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "351039068752",
+    "project_id": "henry-50apps-project",
+    "storage_bucket": "henry-50apps-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351039068752:android:159d8a493ef10b39254f55",
+        "android_client_info": {
+          "package_name": "com.hosle.woodlandscheckpoint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvGo5_Xcomqi3DwMg_K_Sp4QBlMWC6VXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
