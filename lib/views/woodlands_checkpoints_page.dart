@@ -204,13 +204,13 @@ class _WoodlandsCheckpointsPageState extends State<WoodlandsCheckpointsPage> {
       appBar: AppBar(
         title: const Text('Woodlands Checkpoint'),
         actions: [
-          // Test Crash button - visible in debug and profile builds, hidden in release
-          if (!kReleaseMode)
-            IconButton(
-              icon: const Icon(Icons.bug_report, color: Colors.red),
-              onPressed: () => _showCrashTestDialog(context),
-              tooltip: 'Test Crashlytics',
-            ),
+          // Test Crash button - hidden
+          // if (!kReleaseMode)
+          //   IconButton(
+          //     icon: const Icon(Icons.bug_report, color: Colors.red),
+          //     onPressed: () => _showCrashTestDialog(context),
+          //     tooltip: 'Test Crashlytics',
+          //   ),
           IconButton(
             icon: Icon(_isPageView ? Icons.view_list : Icons.view_carousel),
             onPressed: () {
@@ -226,30 +226,30 @@ class _WoodlandsCheckpointsPageState extends State<WoodlandsCheckpointsPage> {
       ),
       body: Column(
         children: [
-          // Banner Ad at the top with LayoutBuilder
-          LayoutBuilder(
-            builder: (context, constraints) {
-              final width = constraints.maxWidth.toInt();
-              debugPrint('LayoutBuilder width: $width');
-
-              // Load ad if not loaded and width is available
-              if (_bannerAd == null && width > 0) {
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  _loadBannerAd(width);
-                });
-              }
-
-              return _isBannerAdLoaded && _bannerAd != null
-                  ? SafeArea(
-                      child: SizedBox(
-                        width: _bannerAd!.size.width.toDouble(),
-                        height: _bannerAd!.size.height.toDouble(),
-                        child: AdWidget(ad: _bannerAd!),
-                      ),
-                    )
-                  : const SizedBox.shrink();
-            },
-          ),
+          // Banner Ad - hidden
+          // LayoutBuilder(
+          //   builder: (context, constraints) {
+          //     final width = constraints.maxWidth.toInt();
+          //     debugPrint('LayoutBuilder width: $width');
+          //
+          //     // Load ad if not loaded and width is available
+          //     if (_bannerAd == null && width > 0) {
+          //       WidgetsBinding.instance.addPostFrameCallback((_) {
+          //         _loadBannerAd(width);
+          //       });
+          //     }
+          //
+          //     return _isBannerAdLoaded && _bannerAd != null
+          //         ? SafeArea(
+          //             child: SizedBox(
+          //               width: _bannerAd!.size.width.toDouble(),
+          //               height: _bannerAd!.size.height.toDouble(),
+          //               child: AdWidget(ad: _bannerAd!),
+          //             ),
+          //           )
+          //         : const SizedBox.shrink();
+          //   },
+          // ),
           // Main content
           Expanded(child: bodyContent),
         ],
