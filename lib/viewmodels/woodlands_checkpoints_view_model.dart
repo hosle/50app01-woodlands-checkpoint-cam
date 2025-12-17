@@ -8,9 +8,12 @@ import '../models/checkpoint_image.dart';
 import '../models/constant.dart' as constants;
 import '../models/traffic_camera.dart';
 
-class WoodlandsCheckpointsViewModel extends ChangeNotifier {
-  WoodlandsCheckpointsViewModel();
+enum CheckpointType { woodlands, tuas, all }
 
+class WoodlandsCheckpointsViewModel extends ChangeNotifier {
+  WoodlandsCheckpointsViewModel({this.checkpointType = CheckpointType.all});
+
+  final CheckpointType checkpointType;
   final List<CheckpointImage> _images = [];
   bool _isLoading = false;
   String? _errorMessage;
@@ -19,6 +22,17 @@ class WoodlandsCheckpointsViewModel extends ChangeNotifier {
       UnmodifiableListView(_images);
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
+
+  Map<String, String> get _cameraIds {
+    switch (checkpointType) {
+      case CheckpointType.woodlands:
+        return constants.woodlandsCameraIds;
+      case CheckpointType.tuas:
+        return constants.tuasCameraIds;
+      case CheckpointType.all:
+        return constants.seletedCameraIds;
+    }
+  }
 
   Future<void> loadImages() async {
     _setLoading(true);
@@ -48,9 +62,9 @@ class WoodlandsCheckpointsViewModel extends ChangeNotifier {
             cameraMap[camera.cameraID] = camera;
           }
 
-          // Build images list in the order defined in seletedCameraIds
+          // Build images list in the order defined in camera IDs
           _images.clear();
-          for (final entry in constants.seletedCameraIds.entries) {
+          for (final entry in _cameraIds.entries) {
             final cameraId = entry.key;
             final title = entry.value;
             final camera = cameraMap[cameraId];

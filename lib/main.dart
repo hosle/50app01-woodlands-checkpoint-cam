@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'firebase_options.dart';
+import 'models/app_config.dart';
 import 'models/app_secrets.dart';
-import 'views/woodlands_checkpoints_page.dart';
+import 'views/home_page.dart';
 
 void main() async {
   // Ensure Flutter bindings are initialized
@@ -29,8 +30,10 @@ void main() async {
   // Load app secrets
   await AppSecrets.load();
 
-  // Initialize the Mobile Ads SDK
-  MobileAds.instance.initialize();
+  // Initialize the Mobile Ads SDK (skip if no-ads build)
+  if (!AppConfig.noAds) {
+    MobileAds.instance.initialize();
+  }
 
   runApp(const MyApp());
 }
@@ -47,7 +50,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      home: const WoodlandsCheckpointsPage(),
+      home: const HomePage(),
     );
   }
 }
