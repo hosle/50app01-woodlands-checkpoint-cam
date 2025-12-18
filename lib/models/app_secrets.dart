@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 
 /// Class to manage application secrets loaded from secrets.json
 /// This file should not be committed to version control
@@ -44,25 +45,12 @@ class AppSecrets {
   /// Check if secrets are loaded
   static bool get isLoaded => _instance != null;
 
-  /// Load secrets from secrets.json file
+  /// Load secrets from secrets.json asset file
   /// Returns true if successful, false otherwise
   static Future<bool> load() async {
     try {
-      final file = File('secrets.json');
-
-      if (!await file.exists()) {
-        debugPrint('WARNING: secrets.json not found. Using test ad unit IDs.');
-        // Use test ad unit IDs as fallback
-        _instance = AppSecrets._(
-          androidBannerAdUnitId: 'ca-app-pub-3940256099942544/9214589741',
-          iosBannerAdUnitId: 'ca-app-pub-3940256099942544/2435281174',
-          androidNativeAdUnitId: 'ca-app-pub-3940256099942544/2247696110',
-          iosNativeAdUnitId: 'ca-app-pub-3940256099942544/3986624511',
-        );
-        return false;
-      }
-
-      final contents = await file.readAsString();
+      // Load from Flutter assets (bundled with the app)
+      final contents = await rootBundle.loadString('secrets.json');
       final json = jsonDecode(contents) as Map<String, dynamic>;
 
       final admob = json['admob'] as Map<String, dynamic>;
@@ -79,7 +67,7 @@ class AppSecrets {
       debugPrint('AppSecrets loaded successfully');
       return true;
     } catch (e) {
-      debugPrint('Error loading secrets.json: $e');
+      debugPrint('WARNING: secrets.json not found or invalid: $e');
       debugPrint('Using test ad unit IDs as fallback');
 
       // Use test ad unit IDs as fallback
