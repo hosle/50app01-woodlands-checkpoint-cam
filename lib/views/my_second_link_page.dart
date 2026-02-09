@@ -26,9 +26,9 @@ class _MySecondLinkPageState extends State<MySecondLinkPage> {
   bool _isLiveEnv = false;
 
   static const String _liveBaseUrl =
-      'https://woodlands-checkpoint-sg.as.r.appspot.com';
-
-  static const String _localBaseUrl = 'http://172.20.10.3:8080';
+      'https://woodlands-checkpoint-sg-249264132946.asia-southeast1.run.app';
+// https://default-249264132946.asia-southeast1.run.app
+  static const String _localBaseUrl = 'http://192.168.1.56:8080';
 
   String _baseUrl = kReleaseMode ? _liveBaseUrl : _localBaseUrl;
 
@@ -87,7 +87,7 @@ class _MySecondLinkPageState extends State<MySecondLinkPage> {
     try {
       final response = await http
           .get(Uri.parse('$_baseUrl/my_second_link'))
-          .timeout(const Duration(seconds: 30));
+          .timeout(const Duration(seconds: 60));
 
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
