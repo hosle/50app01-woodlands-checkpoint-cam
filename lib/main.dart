@@ -32,6 +32,16 @@ void main() async {
 
   // Initialize the Mobile Ads SDK (skip if no-ads build)
   if (!AppConfig.noAds) {
+    final RequestConfiguration requestConfiguration = RequestConfiguration(
+    // Use the appropriate enum value
+      tagForChildDirectedTreatment: TagForChildDirectedTreatment.yes,
+    // You can also set a max ad content rating here if needed
+    // maxAdContentRating: MaxAdContentRating.g, 
+    );
+
+  // Update the global request configuration
+    MobileAds.instance.updateRequestConfiguration(requestConfiguration);
+
     MobileAds.instance.initialize();
   }
 
